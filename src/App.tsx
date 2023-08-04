@@ -1,7 +1,7 @@
 import NavBar from "./components/NavBar/NavBar";
-import Movies from "./components/movies/movies";
-import Series from "./components/series/series";
-import Favorites from "./components/favorites/favorites";
+import Movies from "./components/movies/Movies";
+import Series from "./components/series/Series";
+import Favorites from "./components/favorites/Favorites";
 
 import { Routes, Route } from "react-router-dom";
 
