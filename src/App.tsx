@@ -1,5 +1,5 @@
 import NavBar from "./components/NavBar/NavBar";
-import Movies from "./components/movies/Movies";
+import Movies from "./pages/movies/Movies";
 import Series from "./components/series/Series";
 import Favorites from "./components/favorites/Favorites";
 
