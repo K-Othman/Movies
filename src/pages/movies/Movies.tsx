@@ -1,27 +1,30 @@
-import MovieData from "../../data/film.json";
+// import MovieData from "../../data/film.json";
 
-interface MovieData {
-  id: number;
-  Title: string;
-  Year: string;
-  Released: string;
-  Genre: string;
-  Actors: string;
-  Plot: string;
-  Awards: string;
-  Poster: string;
-  Type: string;
-  Images: string[];
-}
+import { useContext } from "react";
+import { MoviesContext } from "../../context/MoviesApiContext";
 
-const MoviesComponent: React.FC = () => {
+// interface MovieData {
+//   id: number;
+//   Title: string;
+//   Year: string;
+//   Released: string;
+//   Genre: string;
+//   Actors: string;
+//   Plot: string;
+//   Awards: string;
+//   Poster: string;
+//   Type: string;
+//   Images: string[];
+// }
+
+const MoviesComponent = () => {
   // const [movies, setMovies] = useState<MovieData[]>(MovieData);
   // const [loader, setLoader] = useState(true);
-  const data = MovieData;
+  const { movies } = useContext(MoviesContext);
 
-  console.log(data);
+  console.log(movies);
 
-  if (!data) {
+  if (!movies) {
     return <div>Loading...</div>;
   }
 
@@ -43,14 +46,14 @@ const MoviesComponent: React.FC = () => {
           className="mt-5 mb-5 p-5 w-3/4 bg-transparent"
         />
       </div>
-      <ul className="flex flex-wrap">
+      Movies
+      {/* <ul className="flex flex-wrap">
         {data.map((movie) => (
           <li key={movie.id} className="w-1/3">
             <img src={movie.Poster} alt={movie.Title} className="" />
-            {/* <p>{movie.Title}</p> */}
           </li>
         ))}
-      </ul>
+      </ul> */}
     </div>
   );
 };
