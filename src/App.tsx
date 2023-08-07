@@ -10,7 +10,9 @@ function App() {
   return (
     <>
       <main className="flex">
+        {/* <div className="flex"> */}
         <NavBar />
+        {/* </div> */}
         <Routes>
           <Route path="/" element={<MainPage />} />
           <Route path="/movies" element={<Movies />} />
