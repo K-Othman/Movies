@@ -12,10 +12,18 @@ const MainPage = () => {
     <section className="text-white container">
       <Search />
       Movies
-      <ul className="flex flex-wrap">
+      <ul className="grid grid-cols-4 gap-6">
         {movieData.map((movie) => (
-          <li key={movie.id} className="w-1/3">
-            <img src={movie.Poster} alt={movie.Title} className="" />
+          <li key={movie.id} className=" ">
+            <img
+              src={movie.Poster}
+              alt={movie.Title}
+              className="w-[341px] h-[226px]"
+            />
+            <div className="flex gap-4 text-gray-400 text-sm">
+              {movie.Year}
+              {movie.Type === "movie" ? <p>Movie</p> : <p>Series</p>}
+            </div>
           </li>
         ))}
       </ul>
