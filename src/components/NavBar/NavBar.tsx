@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 const NavBar = () => {
   return (
-    <nav className="bg-nav_color text-text_color h-[97vh] w-16 m-5  flex flex-col pt-5 items-center rounded-xl">
+    <nav className="bg-nav_color text-text_color h-[97vh] w-16 m-5  flex  flex-col pt-5 items-center rounded-xl">
       <Link to="/">
         <svg
           className="text-2xl text-red-600 mx-auto hover:text-slate-500 transition-all mb-10"
@@ -57,6 +57,7 @@ const NavBar = () => {
           </svg>
         </Link>
       </section>
+      {/* </div> */}
     </nav>
   );
 };

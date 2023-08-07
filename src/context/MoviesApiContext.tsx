@@ -1,4 +1,4 @@
-import { FC, ReactNode, createContext, useMemo, useState } from "react";
+import { FC, ReactNode, createContext, useMemo } from "react";
 
 import movieData from "../data/film.json";
 
@@ -21,7 +21,7 @@ export interface MovieData {
 
 export interface IMoviesContext {
   movieData: MovieData[];
-  movies: MovieData[];
+  // movies: MovieData[];
 }
 
 export const MoviesContext = createContext<IMoviesContext>(
@@ -29,17 +29,16 @@ export const MoviesContext = createContext<IMoviesContext>(
 );
 
 const MoviesApiContext: FC<Props> = ({ children }) => {
-  const [movies, setMovies] = useState<MovieData[]>(movieData);
+  // const [movies, setMovies] = useState<MovieData[]>(movieData);
 
   const MoviesContextValue = useMemo(
     () => ({
       movieData,
-      movies,
-      setMovies,
+      // movies,
+      // setMovies,
     }),
-    [movies]
+    []
   );
-  console.log(movies);
 
   return (
     <MoviesContext.Provider value={MoviesContextValue}>
