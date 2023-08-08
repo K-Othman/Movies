@@ -5,6 +5,7 @@ import Favorites from "./components/favorites/Favorites";
 
 import { Routes, Route } from "react-router-dom";
 import MainPage from "./pages/mainPage/MainPage";
+import SingleMovie from "./pages/singleMovie/SingleMovie";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
           <Route path="/movies" element={<Movies />} />
           <Route path="/series" element={<Series />} />
           <Route path="/favorites" element={<Favorites />} />
+          <Route path="/movies/movie" element={<SingleMovie />} />
         </Routes>
       </main>
     </>
