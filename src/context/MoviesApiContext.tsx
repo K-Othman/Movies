@@ -1,4 +1,11 @@
-import { FC, ReactNode, createContext, useMemo } from "react";
+import {
+  FC,
+  ReactNode,
+  createContext,
+  // useCallback,
+  useMemo,
+  useState,
+} from "react";
 
 import movieData from "../data/film.json";
 
@@ -21,7 +28,8 @@ export interface MovieData {
 
 export interface IMoviesContext {
   movieData: MovieData[];
-  // movies: MovieData[];
+  allMovies: MovieData[];
+  // filteredMovies: () => void;
 }
 
 export const MoviesContext = createContext<IMoviesContext>(
@@ -29,15 +37,23 @@ export const MoviesContext = createContext<IMoviesContext>(
 );
 
 const MoviesApiContext: FC<Props> = ({ children }) => {
-  // const [movies, setMovies] = useState<MovieData[]>(movieData);
+  const [allMovies, setAllMovies] = useState<MovieData[]>(movieData);
+
+  // const filteredMovies = useCallback(() => {
+  //   const movies = setAllMovies(
+  //     [...allMovies].filter((movie) => movie.Type === "movie")
+  //   );
+  //   console.log(movies);
+  // }, [allMovies]);
 
   const MoviesContextValue = useMemo(
     () => ({
       movieData,
-      // movies,
-      // setMovies,
+      allMovies,
+      setAllMovies,
+      // filteredMovies,
     }),
-    []
+    [allMovies]
   );
 
   return (

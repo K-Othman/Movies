@@ -2,13 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
+body {
+  background-color: #10141f;
   font-family: "Open Sans", sans-serif;
   font-family: "Poppins", sans-serif;
   font-family: "Roboto", sans-serif;
   font-family: "Roboto Condensed", sans-serif;
   font-family: "Tajawal", sans-serif;
-}
-body {
-  background-color: #10141f;
 }
