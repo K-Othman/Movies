@@ -4,34 +4,36 @@ import Search from "../../components/search/Search";
 import { Link } from "react-router-dom";
 
 const MainPage = () => {
-  const { movieData } = useContext(MoviesContext);
+  const { allMovies } = useContext(MoviesContext);
 
-  if (!movieData) {
+  if (!allMovies) {
     return <div>Loading...</div>;
   }
   return (
-    <section className="text-white container">
+    <section className="text-white container mx-auto">
       <Search />
-      Recommended for you
-      <ul className="grid md:grid-cols-4 grid-cols-1 gap-6">
-        {movieData.map((movie) => (
-          <li key={movie.id} className=" ">
+      <h2 className="md:text-4xl text-xl pl-3 font-thin">
+        Recommended for you
+      </h2>
+      <ul className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 p-3">
+        {allMovies.map((movie) => (
+          <li key={movie.id}>
             <div className="relative">
               <Link to="/movies/movie">
                 <img
                   src={movie.Poster}
                   alt={movie.Title}
-                  className="md:w-[341px] w-[250px] h-[200px] md:h-[226px] rounded-xl"
+                  className="w-full h-[200px] md:h-[226px] rounded-xl"
                 />
-                <div className="flex gap-4 text-gray-400 text-sm mt-3">
-                  <p> {movie.Year}</p>
-                  {movie.Type === "movie" ? <p>Movie</p> : <p>Series</p>}
+                <div className="flex gap-2 text-gray-400 text-xs sm:text-sm mt-1">
+                  <p>{movie.Year}</p>
+                  <p>{movie.Type === "movie" ? "Movie" : "Series"}</p>
                 </div>
-                <p>{movie.Title} </p>
+                <p className="text-sm">{movie.Title}</p>
               </Link>
               <Link
                 to="/favorites"
-                className="absolute top-5 md:right-3 right-12 hover:text-white"
+                className="absolute top-2 right-2 hover:text-white bg-[rgba(0,0,0,0.5)] rounded-full p-1"
               >
                 <svg
                   fill="currentColor"

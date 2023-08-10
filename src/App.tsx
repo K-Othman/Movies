@@ -1,6 +1,6 @@
 import NavBar from "./components/NavBar/NavBar";
 import Movies from "./pages/movies/Movies";
-import Series from "./components/series/Series";
+import Series from "./pages/series/Series";
 import Favorites from "./components/favorites/Favorites";
 
 import { Routes, Route } from "react-router-dom";
@@ -11,9 +11,7 @@ function App() {
   return (
     <>
       <main className="flex">
-        {/* <div className="flex"> */}
         <NavBar />
-        {/* </div> */}
         <Routes>
           <Route path="/" element={<MainPage />} />
           <Route path="/movies" element={<Movies />} />
