@@ -8,7 +8,7 @@ const Series = () => {
   const serieses = allMovies.filter((series) => series.Type === "series");
 
   return (
-    <section className="text-white">
+    <section className="text-white container mx-auto">
       <Search />
       <ul className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 p-3">
         {serieses.map((series) => (
