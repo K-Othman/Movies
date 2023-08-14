@@ -19,7 +19,7 @@ const MainPage = () => {
         {allMovies.map((movie) => (
           <li key={movie.id}>
             <div className="relative">
-              <Link to="/movies/movie">
+              <Link to={`/movies/${movie.id}`}>
                 <img
                   src={movie.Poster}
                   alt={movie.Title}
