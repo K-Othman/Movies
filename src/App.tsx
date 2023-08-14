@@ -10,15 +10,19 @@ import SingleMovie from "./pages/singleMovie/SingleMovie";
 function App() {
   return (
     <>
-      <main className="flex">
-        <NavBar />
-        <Routes>
-          <Route path="/" element={<MainPage />} />
-          <Route path="/movies" element={<Movies />} />
-          <Route path="/series" element={<Series />} />
-          <Route path="/favorites" element={<Favorites />} />
-          <Route path="/movies/movie" element={<SingleMovie />} />
-        </Routes>
+      <main className="grid grid-cols-[80px,1fr]">
+        <div>
+          <NavBar />
+        </div>
+        <div>
+          <Routes>
+            <Route path="/" element={<MainPage />} />
+            <Route path="/movies" element={<Movies />} />
+            <Route path="/series" element={<Series />} />
+            <Route path="/favorites" element={<Favorites />} />
+            <Route path="/movies/movie" element={<SingleMovie />} />
+          </Routes>
+        </div>
       </main>
     </>
   );
