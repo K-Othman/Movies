@@ -111,10 +111,17 @@ export interface MovieData {
   Images: string[];
 }
 
+type FavoriteMovies = {
+  id: number;
+  Title: string;
+  Poster: string;
+};
+
 export interface IMoviesContext {
   movieData: MovieData[];
   allMovies: MovieData[];
-  favoritesList: (movie: MovieData) => void;
+  favoritesMoviesList: (movie: MovieData) => void;
+  favoriteMovies: FavoriteMovies[];
 }
 
 export const MoviesContext = createContext<IMoviesContext>(
@@ -123,24 +130,57 @@ export const MoviesContext = createContext<IMoviesContext>(
 
 const MoviesApiContext: FC<Props> = ({ children }) => {
   const [allMovies, setAllMovies] = useState<MovieData[]>(movieData);
+  const [favoriteList, setFavoriteList] = useState<FavoriteMovies[]>();
 
-  const favoritesList = useCallback((movie: MovieData) => {
-    setAllMovies((prevMovies) => {
-      const isMovieInFavorites = prevMovies.some((m) => m.id === movie.id);
+  // const favoritesList = useCallback((movie: MovieData) => {
+  //   setAllMovies((prevMovies) => {
+  //     const isMovieInFavorites = prevMovies.some((m) => m.id === movie.id);
 
-      if (isMovieInFavorites) {
-        return prevMovies.filter((m) => m.id !== movie.id);
+  //     if (isMovieInFavorites) {
+  //       return prevMovies.filter((m) => m.id !== movie.id);
+  //     } else {
+  //       return [...prevMovies, movie];
+  //     }
+  //   });
+  // }, []);
+  // const favoritesList = useCallback((movieId: number) => {
+  //   const existingItem = allMovies.find((item) => item.id === movieId);
+  //   if (existingItem) {
+  //     const updatedItems = allMovies.map((item) => {
+  //       if (item.id === movieId) {
+  //         return { ...item };
+  //       }
+  //       return item;
+  //     });
+  //     setAllMovies(updatedItems);
+  //   } else {
+  //     setAllMovies([...allMovies, { id: movieId }]);
+  //   }
+  // }, []);
+
+  const favoritesMoviesList = useCallback(
+    (movieId: number) => {
+      const existingMovie = favoriteList?.find((item) => item.id === movieId);
+      if (existingMovie) {
+        const updatedMoviesList = favoriteList?.map((item) => {
+          if (item.id === movieId) {
+            return { ...item };
+          }
+          return item;
+        });
+        setFavoriteList(updatedMoviesList);
       } else {
-        return [...prevMovies, movie];
+        setFavoriteList([...favoriteList, { id: movieId }]);
       }
-    });
-  }, []);
+    },
+    [favoriteList]
+  );
 
   const MoviesContextValue = useMemo(
     () => ({
       movieData,
       allMovies,
-      favoritesList,
+      favoritesMoviesList,
     }),
     [allMovies, favoritesList]
   );
