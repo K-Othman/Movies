@@ -130,59 +130,42 @@ export const MoviesContext = createContext<IMoviesContext>(
 
 const MoviesApiContext: FC<Props> = ({ children }) => {
   const [allMovies, setAllMovies] = useState<MovieData[]>(movieData);
-  const [favoriteList, setFavoriteList] = useState<FavoriteMovies[]>();
-
-  // const favoritesList = useCallback((movie: MovieData) => {
-  //   setAllMovies((prevMovies) => {
-  //     const isMovieInFavorites = prevMovies.some((m) => m.id === movie.id);
-
-  //     if (isMovieInFavorites) {
-  //       return prevMovies.filter((m) => m.id !== movie.id);
-  //     } else {
-  //       return [...prevMovies, movie];
-  //     }
-  //   });
-  // }, []);
-  // const favoritesList = useCallback((movieId: number) => {
-  //   const existingItem = allMovies.find((item) => item.id === movieId);
-  //   if (existingItem) {
-  //     const updatedItems = allMovies.map((item) => {
-  //       if (item.id === movieId) {
-  //         return { ...item };
-  //       }
-  //       return item;
-  //     });
-  //     setAllMovies(updatedItems);
-  //   } else {
-  //     setAllMovies([...allMovies, { id: movieId }]);
-  //   }
-  // }, []);
+  const [favoriteList, setFavoriteList] = useState<FavoriteMovies[]>([]);
 
   const favoritesMoviesList = useCallback(
-    (movieId: number) => {
-      const existingMovie = favoriteList?.find((item) => item.id === movieId);
-      if (existingMovie) {
-        const updatedMoviesList = favoriteList?.map((item) => {
-          if (item.id === movieId) {
-            return { ...item };
-          }
-          return item;
-        });
-        setFavoriteList(updatedMoviesList);
+    (movie: MovieData) => {
+      if (favoriteList) {
+        const existingMovie = favoriteList.find((item) => item.id === movie.id);
+        if (existingMovie) {
+          const updatedMoviesList = favoriteList.filter(
+            (item) => item.id !== movie.id
+          );
+          setFavoriteList(updatedMoviesList);
+        } else {
+          setFavoriteList([
+            ...favoriteList,
+            { id: movie.id, Title: movie.Title, Poster: movie.Poster },
+          ]);
+        }
       } else {
-        setFavoriteList([...favoriteList, { id: movieId }]);
+        setFavoriteList([
+          { id: movie.id, Title: movie.Title, Poster: movie.Poster },
+        ]);
       }
     },
     [favoriteList]
   );
+  console.log(favoriteList);
 
   const MoviesContextValue = useMemo(
     () => ({
       movieData,
+      setAllMovies,
       allMovies,
       favoritesMoviesList,
+      favoriteMovies: favoriteList,
     }),
-    [allMovies, favoritesList]
+    [allMovies, favoriteList, favoritesMoviesList]
   );
 
   return (
