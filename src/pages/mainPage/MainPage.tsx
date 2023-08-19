@@ -4,11 +4,12 @@ import Search from "../../components/search/Search";
 import { Link } from "react-router-dom";
 
 const MainPage = () => {
-  const { allMovies } = useContext(MoviesContext);
+  const { allMovies, favoritesMoviesList } = useContext(MoviesContext);
 
   if (!allMovies) {
     return <div>Loading...</div>;
   }
+
   return (
     <section className="text-white container mx-auto">
       <Search />
@@ -34,6 +35,7 @@ const MainPage = () => {
               <Link
                 to="/favorites"
                 className="absolute top-2 right-2 hover:text-white bg-[rgba(0,0,0,0.5)] rounded-full p-1"
+                onClick={() => favoritesMoviesList(movie)}
               >
                 <svg
                   fill="currentColor"
