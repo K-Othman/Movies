@@ -155,7 +155,6 @@ const MoviesApiContext: FC<Props> = ({ children }) => {
     },
     [favoriteList]
   );
-  console.log(favoriteList);
 
   const MoviesContextValue = useMemo(
     () => ({
