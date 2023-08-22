@@ -6,8 +6,8 @@ import {
   useState,
   useCallback,
 } from "react";
-import movieData from "../data/film.json";
-import { useLocalStorage } from "../hooks/useLocalStorage";
+import movieData from "../../data/film.json";
+import { useLocalStorage } from "../../hooks/useLocalStorage";
 
 type Props = {
   children: ReactNode;

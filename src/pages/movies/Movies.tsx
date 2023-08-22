@@ -1,7 +1,7 @@
 import { useContext } from "react";
-import { MoviesContext } from "../../context/MoviesApiContext";
+import { MoviesContext } from "../../context/moviesContext/MoviesApiContext";
 import { Link } from "react-router-dom";
-import Search from "../../components/search/Search";
+// import Search from "../../components/search/Search";
 
 const MoviesComponent = () => {
   const { allMovies, favoritesList } = useContext(MoviesContext);
@@ -10,7 +10,7 @@ const MoviesComponent = () => {
 
   return (
     <section className="text-white container mx-auto">
-      <Search />
+      {/* <Search /> */}
       <ul className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 p-3">
         {moviesOnly.map((movie) => (
           <li key={movie.id}>

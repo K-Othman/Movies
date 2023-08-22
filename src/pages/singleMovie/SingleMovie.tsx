@@ -1,5 +1,5 @@
 import { useContext, useState } from "react";
-import { MoviesContext } from "../../context/MoviesApiContext";
+import { MoviesContext } from "../../context/moviesContext/MoviesApiContext";
 import { useParams } from "react-router-dom";
 
 const SingleMovie = () => {
