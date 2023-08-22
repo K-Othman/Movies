@@ -28,7 +28,7 @@
 // export default Favorites;
 
 import { useContext } from "react";
-import { MoviesContext } from "../../context/MoviesApiContext";
+import { MoviesContext } from "../../context/moviesContext/MoviesApiContext";
 
 const Favorites = () => {
   const { favoriteMovies, deleteMovies } = useContext(MoviesContext);

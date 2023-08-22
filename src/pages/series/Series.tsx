@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import Search from "../../components/search/Search";
 import { useContext } from "react";
-import { MoviesContext } from "../../context/MoviesApiContext";
+import { MoviesContext } from "../../context/moviesContext/MoviesApiContext";
 
 const Series = () => {
   const { allMovies } = useContext(MoviesContext);
