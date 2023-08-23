@@ -19,13 +19,27 @@ const MainPage = () => {
 
   return (
     <section className="text-white container mx-auto">
-      <div className="flex flex-col">
+      <div className="flex items-center">
         <input
           type="search"
           placeholder="Search For Movies Or Series"
-          className="mt-5 mb-5 p-5 w-3/4 bg-transparent"
+          className="mt-5 mb-5 p-5 w-3/4 bg-transparent outline-none "
           onChange={(e) => setSearch(e.target.value)}
         />
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          strokeWidth={1.5}
+          stroke="currentColor"
+          className="w-6 h-6"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"
+          />
+        </svg>
       </div>
 
       <h2 className="md:text-4xl text-xl pl-3 font-thin">

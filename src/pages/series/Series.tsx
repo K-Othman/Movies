@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import Search from "../../components/search/Search";
+// import Search from "../../components/search/Search";
 import { useContext } from "react";
 import { MoviesContext } from "../../context/moviesContext/MoviesApiContext";
 
@@ -9,7 +9,7 @@ const Series = () => {
 
   return (
     <section className="text-white container mx-auto">
-      <Search />
+      {/* <Search /> */}
       <ul className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 p-3">
         {serieses.map((series) => (
           <li key={series.id}>
