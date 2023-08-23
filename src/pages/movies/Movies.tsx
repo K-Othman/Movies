@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 // import Search from "../../components/search/Search";
 
 const MoviesComponent = () => {
-  const { allMovies, favoritesList } = useContext(MoviesContext);
+  const { allMovies, favoritesMoviesList } = useContext(MoviesContext);
 
   const moviesOnly = allMovies.filter((movie) => movie.Type === "movie");
 
@@ -29,7 +29,7 @@ const MoviesComponent = () => {
               </Link>
               <button
                 className="absolute top-2 right-2 hover:text-white bg-[rgba(0,0,0,0.5)] rounded-full p-1"
-                onClick={() => favoritesList(movie)}
+                onClick={() => favoritesMoviesList(movie)}
               >
                 <svg
                   fill="currentColor"

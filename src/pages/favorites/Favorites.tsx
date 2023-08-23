@@ -1,32 +1,3 @@
-// import { useContext } from "react";
-// import { MoviesContext } from "../../context/MoviesApiContext";
-
-// const Favorites = () => {
-//   const { favoriteMovies, deleteMovies } = useContext(MoviesContext);
-
-//   if (favoriteMovies.length === 0) {
-//     return (
-//       <p className="text-white font-bold text-center mt-32">
-//         You don't have any favourite movies yet!
-//       </p>
-//     );
-//   }
-
-//   return (
-//     <div className="text-white">
-//       {favoriteMovies.map((m) => (
-//         <div key={m.id}>
-//           <img src={m.Poster} alt={m.Title} />
-//           <p>{m.Title}</p>
-//           <button onClick={() => deleteMovies(m.id)}>Remove</button>
-//         </div>
-//       ))}
-//     </div>
-//   );
-// };
-
-// export default Favorites;
-
 import { useContext } from "react";
 import { MoviesContext } from "../../context/moviesContext/MoviesApiContext";
 
