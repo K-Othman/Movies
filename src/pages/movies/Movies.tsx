@@ -41,6 +41,9 @@ const MoviesComponent = () => {
           />
         </svg>
       </div>
+      <h2 className="md:text-4xl text-xl pl-3 font-thin">
+        Recommended Movies for you
+      </h2>
       <ul className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 p-3">
         {moviesOnly
           .filter((movie) => {
