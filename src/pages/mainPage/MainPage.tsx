@@ -55,7 +55,7 @@ const MainPage = () => {
           .map((movie) => (
             <li
               key={movie.id}
-              className="hover:bg-nav_color  transition duration-300"
+              className="hover:bg-nav_color transition duration-300"
             >
               <div className="relative">
                 <Link to={`/movies/${movie.id}`}>
