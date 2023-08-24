@@ -14,7 +14,7 @@ const Favorites = () => {
 
   return (
     <div className="text-white p-4">
-      <h2 className="text-2xl font-semibold mb-4">Your Favorite Movies</h2>
+      <h2 className="text-2xl font-semibold mb-4">Your Favorite List</h2>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
         {favoriteMovies.map((m) => (
           <div key={m.id} className="bg-gray-800 rounded-md p-3">
