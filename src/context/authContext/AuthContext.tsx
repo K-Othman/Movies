@@ -1,80 +1,72 @@
-// import {
-//     useContext,
-//     createContext,
-//     FC,
-//     ReactNode,
-//     useMemo,
-//     useEffect,
-//     useState,
-//   } from "react";
-//   import {
-//     GoogleAuthProvider,
-//     signInWithPopup,
-//     signOut,
-//     onAuthStateChanged,
-//     User,
-//     createUserWithEmailAndPassword,
-//     signInWithEmailAndPassword,
-//     Auth,
-//   } from "firebase/auth";
-//   import { auth } from "../firebase";
+import {
+  useContext,
+  createContext,
+  FC,
+  ReactNode,
+  useMemo,
+  useEffect,
+  useState,
+  useCallback,
+} from "react";
+import {
+  GoogleAuthProvider,
+  signInWithPopup,
+  signOut,
+  onAuthStateChanged,
+  User,
+} from "firebase/auth";
+import { auth } from "../../../firebaseConfig";
 
-//   type Props = {
-//     children: ReactNode;
-//   };
+type Props = {
+  children: ReactNode;
+};
 
-//   interface IAuth {
-//     googleSignIn: () => void;
-//     logOut: () => void;
-//     user: User | null;
-//     createUser: (email: string, password: string) => void;
-//   }
+interface IAuth {
+  googleSignIn: () => void;
+  logOut: () => void;
+  user: User | null;
+}
 
-//   const AuthContext = createContext<IAuth>({} as IAuth);
+const AuthContext = createContext<IAuth>({} as IAuth);
 
-//   export const AuthContextProvider: FC<Props> = ({ children }) => {
-//     const [user, setUser] = useState<User | null>(null);
+export const AuthContextProvider: FC<Props> = ({ children }) => {
+  const [user, setUser] = useState<User | null>(null);
 
-//     const googleSignIn = () => {
-//       const provider = new GoogleAuthProvider();
-//       signInWithPopup(auth, provider);
-//     };
+  const googleSignIn = useCallback(() => {
+    const provider = new GoogleAuthProvider();
+    signInWithPopup(auth, provider);
+  }, []);
 
-//     const createUser = (email: string, password: string) => {
-//       return createUserWithEmailAndPassword(auth, email, password);
-//     };
+  const logOut = useCallback(() => {
+    signOut(auth);
+    localStorage.clear();
+  }, []);
 
-//     const logOut = () => {
-//       signOut(auth);
-//       localStorage.clear();
-//     };
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+      setUser(currentUser);
+    });
+    return () => {
+      unsubscribe();
+    };
+  }, []);
 
-//     useEffect(() => {
-//       const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-//         setUser(currentUser);
-//       });
-//       return () => {
-//         unsubscribe();
-//       };
-//     }, []);
+  const AuthContextValue = useMemo(
+    () => ({
+      googleSignIn,
+      logOut,
+      user,
+    }),
+    [googleSignIn, logOut, user]
+  );
 
-//     const AuthContextValue = useMemo(
-//       () => ({
-//         googleSignIn,
-//         logOut,
-//         user,
-//         createUser,
-//       }),
-//       [googleSignIn, logOut, user, createUser]
-//     );
+  return (
+    <AuthContext.Provider value={AuthContextValue}>
+      {children}
+    </AuthContext.Provider>
+  );
+};
 
-//     return (
-//       <AuthContext.Provider value={AuthContextValue}>
-//         {children}
-//       </AuthContext.Provider>
-//     );
-//   };
-
-//   export const UserAuth = () => {
-//     return useContext(AuthContext);
-//   };
+export const UserAuth = () => {
+  return useContext(AuthContext);
+};

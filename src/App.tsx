@@ -6,23 +6,28 @@ import Favorites from "./pages/favorites/Favorites";
 import { Routes, Route } from "react-router-dom";
 import MainPage from "./pages/mainPage/MainPage";
 import SingleMovie from "./pages/singleMovie/SingleMovie";
+import { AuthContextProvider } from "./context/authContext/AuthContext";
+import SignIn from "./pages/signIn/SignIn";
 
 function App() {
   return (
     <>
       <main className="grid grid-cols-[80px,1fr]">
-        <div>
-          <NavBar />
-        </div>
-        <div>
-          <Routes>
-            <Route path="/" element={<MainPage />} />
-            <Route path="/movies" element={<Movies />} />
-            <Route path="/series" element={<Series />} />
-            <Route path="/favorites" element={<Favorites />} />
-            <Route path="/movies/:movieId" element={<SingleMovie />} />
-          </Routes>
-        </div>
+        <AuthContextProvider>
+          <div>
+            <NavBar />
+          </div>
+          <div>
+            <Routes>
+              <Route path="/" element={<MainPage />} />
+              <Route path="/movies" element={<Movies />} />
+              <Route path="/series" element={<Series />} />
+              <Route path="/favorites" element={<Favorites />} />
+              <Route path="/movies/:movieId" element={<SingleMovie />} />
+              <Route path="/movies/signin" element={<SignIn />} />
+            </Routes>
+          </div>
+        </AuthContextProvider>
       </main>
     </>
   );
