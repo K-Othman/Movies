@@ -13,7 +13,7 @@ const SignIn = () => {
   };
 
   return (
-    <div className="flex items-center justify-center h-screen bg-gray-100">
+    <div className="flex items-center justify-center h-screen  bg-main_color">
       <div className="bg-white p-8 rounded-lg shadow-md">
         <h2 className="text-2xl font-semibold mb-4">Sign In</h2>
         <p className="text-gray-600 mb-6">Sign in using your Google account</p>
