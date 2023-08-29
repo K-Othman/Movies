@@ -3,14 +3,11 @@ import { getAuth } from "firebase/auth";
 
 const firebaseConfig = {
   apiKey: `${import.meta.env.REACT_APP_API_KEY}`,
-  authDomain: "movies-f69aa.firebaseapp.com",
-  databaseURL:
-    "https://movies-f69aa-default-rtdb.europe-west1.firebasedatabase.app",
-  projectId: "movies-f69aa",
-  storageBucket: "movies-f69aa.appspot.com",
-  messagingSenderId: "742228885288",
-  appId: "1:742228885288:web:6cbba260c4c3eb65445a1d",
-  measurementId: "G-TYL7TEE0EJ",
+  authDomain: "my-movies-84807.firebaseapp.com",
+  projectId: "my-movies-84807",
+  storageBucket: "my-movies-84807.appspot.com",
+  messagingSenderId: "208745601095",
+  appId: "1:208745601095:web:4e6656076f06831b973962",
 };
 
 const app = initializeApp(firebaseConfig);

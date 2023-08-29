@@ -24,7 +24,7 @@ function App() {
               <Route path="/series" element={<Series />} />
               <Route path="/favorites" element={<Favorites />} />
               <Route path="/movies/:movieId" element={<SingleMovie />} />
-              <Route path="/movies/signin" element={<SignIn />} />
+              <Route path="/signin" element={<SignIn />} />
             </Routes>
           </div>
         </AuthContextProvider>
