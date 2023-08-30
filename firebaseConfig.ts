@@ -2,7 +2,7 @@ import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
 
 const firebaseConfig = {
-  apiKey: `${import.meta.env.REACT_APP_API_KEY}`,
+  apiKey: `${import.meta.env.VITE_API_KEY}`,
   authDomain: "my-movies-84807.firebaseapp.com",
   projectId: "my-movies-84807",
   storageBucket: "my-movies-84807.appspot.com",
@@ -13,3 +13,6 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 
 export const auth = getAuth(app);
+export default app;
+
+// import.meta.env.VITE_SOME_KEY
