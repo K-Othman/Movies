@@ -57,7 +57,7 @@ const NavBar = () => {
           </svg>
         </Link>
       </section>
-      {/* </div> */}
+      <Link to={"/signin"}>Log In</Link>
     </nav>
   );
 };
