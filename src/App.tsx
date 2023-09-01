@@ -8,6 +8,7 @@ import MainPage from "./pages/mainPage/MainPage";
 import SingleMovie from "./pages/singleMovie/SingleMovie";
 import { AuthContextProvider } from "./context/authContext/AuthContext";
 import SignIn from "./pages/signIn/SignIn";
+import Protected from "./components/protected/Protected";
 
 function App() {
   return (
@@ -22,7 +23,14 @@ function App() {
               <Route path="/" element={<MainPage />} />
               <Route path="/movies" element={<Movies />} />
               <Route path="/series" element={<Series />} />
-              <Route path="/favorites" element={<Favorites />} />
+              <Route
+                path="/favorites"
+                element={
+                  <Protected>
+                    <Favorites />{" "}
+                  </Protected>
+                }
+              />
               <Route path="/movies/:movieId" element={<SingleMovie />} />
               <Route path="/signin" element={<SignIn />} />
             </Routes>

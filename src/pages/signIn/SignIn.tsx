@@ -2,7 +2,7 @@ import { UserAuth } from "../../context/authContext/AuthContext";
 import GoogleButton from "react-google-button";
 
 const SignIn = () => {
-  const { googleSignIn } = UserAuth();
+  const { googleSignIn, user } = UserAuth();
 
   const handleGoogleSignIn = async () => {
     try {
@@ -11,6 +11,7 @@ const SignIn = () => {
       console.log(error);
     }
   };
+  console.log(user);
 
   return (
     <div className="flex items-center justify-center h-screen bg-main_color">

@@ -10,7 +10,8 @@ import {
 } from "react";
 import {
   GoogleAuthProvider,
-  signInWithPopup,
+  // signInWithPopup,
+  signInWithRedirect,
   signOut,
   onAuthStateChanged,
   User,
@@ -34,7 +35,7 @@ export const AuthContextProvider: FC<Props> = ({ children }) => {
 
   const googleSignIn = useCallback(() => {
     const provider = new GoogleAuthProvider();
-    signInWithPopup(auth, provider);
+    signInWithRedirect(auth, provider);
   }, []);
 
   const logOut = useCallback(() => {
