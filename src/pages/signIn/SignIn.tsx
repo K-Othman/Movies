@@ -1,8 +1,11 @@
+import { useEffect } from "react";
 import { UserAuth } from "../../context/authContext/AuthContext";
 import GoogleButton from "react-google-button";
+import { useNavigate } from "react-router-dom";
 
 const SignIn = () => {
   const { googleSignIn, user } = UserAuth();
+  const Navigate = useNavigate();
 
   const handleGoogleSignIn = async () => {
     try {
@@ -12,6 +15,12 @@ const SignIn = () => {
     }
   };
   console.log(user);
+
+  useEffect(() => {
+    if (user != null) {
+      Navigate("/favorites");
+    }
+  }, [user, Navigate]);
 
   return (
     <div className="flex items-center justify-center h-screen bg-main_color">
