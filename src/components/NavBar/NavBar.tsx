@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { UserAuth } from "../../context/authContext/AuthContext";
+import { ProfileMenu } from "../profileMenu/ProfileMenu";
 
 const NavBar = () => {
   const { logOut } = UserAuth();
@@ -59,8 +60,9 @@ const NavBar = () => {
           </svg>
         </Link>
       </section>
-      <Link to={"/signin"}>Log In</Link>
-      <button onClick={logOut}>Log Out</button>
+      {!logOut ? <Link to={"/signin"}>Log In</Link> : <ProfileMenu />}
+      {/* <Link to={"/signin"}>Log In</Link>
+      <button onClick={logOut}>Log Out</button> */}
     </nav>
   );
 };
