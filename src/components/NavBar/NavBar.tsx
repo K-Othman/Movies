@@ -5,7 +5,7 @@ import { ProfileMenu } from "../profileMenu/ProfileMenu";
 const NavBar = () => {
   const { logOut } = UserAuth();
   return (
-    <nav className="bg-nav_color text-text_color h-[97vh] w-16 m-5 flex flex-col pt-5 items-center rounded-xl md:fixed">
+    <nav className="relative bg-nav_color text-text_color h-[97vh] w-16 m-5 flex flex-col pt-5 items-center rounded-xl md:fixed">
       <Link to="/">
         <svg
           className="text-2xl text-red-600 mx-auto hover:text-slate-500 transition-all mb-10"

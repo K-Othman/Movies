@@ -10,7 +10,7 @@ import {
 export function ProfileMenu() {
   return (
     <Menu>
-      <MenuHandler>
+      <MenuHandler className="absolute bottom-10 w-10 rounded-full">
         <Avatar
           variant="circular"
           alt="tania andrew"
